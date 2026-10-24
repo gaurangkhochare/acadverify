@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-slate-900;
+  }
+}
+
+/* Custom styling matching the SIH / AICTE mockup design */
+.brand-nav-tab {
+  @apply px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 inline-flex items-center gap-2;
+}
+
+.brand-nav-tab-active {
+  @apply bg-white text-brand-800 font-semibold shadow-sm;
+}
+
+.brand-nav-tab-inactive {
+  @apply text-white/80 hover:text-white hover:bg-white/10;
+}
+
+.metric-card-box {
+  @apply bg-white rounded-2xl border border-slate-900 p-6 shadow-sm transition-all;
+}
+
+.metric-card-warning {
+  @apply bg-[#FDE68A] border-slate-900;
+}
+

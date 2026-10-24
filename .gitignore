@@ -1,0 +1,129 @@
+# ==============================================================================
+# Git Ignore Configuration — APAAR Student Data Platform
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Secrets (CRITICAL)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+secrets/
+credentials/
+
+# ------------------------------------------------------------------------------
+# Frontend (Node / React / Vite / TypeScript)
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+frontend/dist-ssr/
+.vite/
+frontend/.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Test & Coverage
+coverage/
+frontend/coverage/
+*.lcov
+.nyc_output/
+
+# ------------------------------------------------------------------------------
+# Backend (Python / FastAPI / SQLAlchemy / Alembic)
+# ------------------------------------------------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Temporary upload directories
+uploads/
+backend/uploads/
+temp/
+tmp/
+
+# ------------------------------------------------------------------------------
+# Operating System Files
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ------------------------------------------------------------------------------
+# IDEs & Code Editors
+# ------------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+
+# ------------------------------------------------------------------------------
+# AI & Agent Scratch / Cache
+# ------------------------------------------------------------------------------
+.gemini/
+.system_generated/
+scratch/
+
