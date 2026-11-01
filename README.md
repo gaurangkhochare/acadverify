@@ -25,6 +25,8 @@ See `docs/TEAM-OWNERSHIP.md` and the individual briefs in `docs/members/`.
 8. `docs/TEAM-OWNERSHIP.md`
 9. `docs/IMPLEMENTATION-PLAN.md`
 10. `docs/TEST-PLAN.md`
+11. `docs/UI-DESIGN-AND-WORKFLOWS.md` (Master UI Design System, All 12 Pages & 6 Workflows)
+12. `docs/SIH-DEMO-AND-PITCH-GUIDE.md` (Live Demo Script & Jury Defense Cheat Sheet)
 
 ## Proposed stack
 The team may use React for the frontend, FastAPI for the backend, and MySQL or PostgreSQL for persistence. Confirm the stack in `docs/DECISIONS.md` before implementation. Do not introduce additional infrastructure without a reason.

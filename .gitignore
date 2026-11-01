@@ -127,3 +127,7 @@ $RECYCLE.BIN/
 .system_generated/
 scratch/
 
+.agent/
+.agents/
+skills-lock.json
+.antideploy.json

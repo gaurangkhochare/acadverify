@@ -1,5 +1,8 @@
 import '@testing-library/jest-dom';
 
+// Mock window.scrollTo for jsdom
+window.scrollTo = () => {};
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -14,4 +17,3 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: () => false,
   }),
 });
-

@@ -145,9 +145,9 @@ export const BulkUploadPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 min-w-0">
       {/* Page Title */}
-      <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
         Upload student data
       </h1>
 

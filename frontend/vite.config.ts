@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      '/api': {
+      '/api/v1': {
         target: 'http://localhost:8000',
         changeOrigin: true,
         configure: (proxy) => {
@@ -42,4 +42,3 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
   },
 } as any);
-

@@ -18,6 +18,6 @@ export interface VerificationResult {
   checked_at: string;
   is_mock: boolean;
   disclaimer: string;
+  apaar_id?: string;
   qr_code_data?: string;
 }
-

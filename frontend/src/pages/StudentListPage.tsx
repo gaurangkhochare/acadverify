@@ -105,11 +105,11 @@ export const StudentListPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6 min-w-0">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Enrolled Student Records
           </h1>
           <p className="text-sm text-slate-600 mt-0.5">
@@ -174,7 +174,7 @@ export const StudentListPage: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="border-2 border-slate-900 rounded-2xl overflow-hidden bg-white shadow-sm">
+      <div className="border-2 border-slate-900 rounded-2xl overflow-x-auto w-full max-w-full bg-white shadow-sm">
         <table className="min-w-full divide-y-2 divide-slate-900 text-left">
           <thead className="bg-[#071830] text-white text-sm font-bold">
             <tr>

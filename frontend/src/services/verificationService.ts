@@ -20,7 +20,7 @@ export const verificationService = {
         (s) => s.apaar_id === cleanId || s.id === req.reference
       );
 
-      const studentName = foundStudent ? foundStudent.name : 'Asha K.';
+      const studentName = foundStudent ? foundStudent.name : 'Asha Krishnan';
       const progName = foundStudent ? foundStudent.programme_name : 'B.Tech, Information Technology';
       const instName = foundStudent ? foundStudent.institution_name : 'Delhi Institute of Advanced Engineering & Technology';
 
@@ -43,9 +43,9 @@ export const verificationService = {
         }),
         is_mock: false,
         disclaimer: 'You only see the details needed to verify this record. The student’s contact and personal details stay private.',
+        apaar_id: cleanId || (foundStudent ? foundStudent.apaar_id : '123456789012'),
         qr_code_data: `https://acadverify.aicte-india.org/verify/${refToken}`,
       };
     }
   },
 };
-

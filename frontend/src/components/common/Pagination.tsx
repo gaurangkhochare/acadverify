@@ -44,10 +44,10 @@ export const Pagination: React.FC<PaginationProps> = ({
               <button
                 key={page}
                 onClick={() => onPageChange(page)}
-                className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
+                className={`relative inline-flex items-center px-4 py-2 border text-sm font-semibold transition-colors ${
                   page === currentPage
                     ? 'z-10 bg-[#0B3C88] border-[#0B3C88] text-white'
-                    : 'bg-white border-slate-300 text-slate-600 hover:bg-slate-50'
+                    : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50'
                 }`}
               >
                 {page}

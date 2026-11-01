@@ -38,7 +38,7 @@ export const Stepper: React.FC<StepperProps> = ({ currentStep, onStepClick }) =>
               {step.number}
             </div>
             <span
-              className={`font-bold text-base sm:text-lg ${
+              className={`font-bold text-sm sm:text-base ${
                 isActive ? 'text-slate-900' : 'text-slate-700'
               }`}
             >

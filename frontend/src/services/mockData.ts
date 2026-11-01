@@ -33,6 +33,16 @@ export const MOCK_USERS: User[] = [
     institution_name: 'Tata Consultancy Services BGV',
     status: 'active',
   },
+  {
+    id: 'usr_student_01',
+    name: 'Asha Krishnan (Student)',
+    email: 'asha.krishnan@student.ac.in',
+    role: 'STUDENT',
+    institution_id: 'inst_01',
+    institution_name: 'Vidyalankar Institute of Technology',
+    apaar_id: '123456789012',
+    status: 'active',
+  },
 ];
 
 export const MOCK_INSTITUTIONS: Institution[] = [

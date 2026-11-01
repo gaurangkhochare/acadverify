@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'secondary' | 'danger' | 'ghost';
+  variant?: 'primary' | 'outline' | 'outline-white' | 'secondary' | 'danger' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
 }
@@ -22,9 +22,11 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary:
-      'bg-[#0B3C88] hover:bg-[#082E68] active:bg-[#062047] text-white border border-[#0B3C88] shadow-sm focus:ring-[#0B3C88]',
+      'bg-[#0B3C88] hover:bg-[#082E68] active:bg-[#062047] text-white font-bold border border-[#0B3C88] shadow-sm focus:ring-[#0B3C88]',
     outline:
-      'bg-white hover:bg-slate-50 active:bg-slate-100 text-[#0B3C88] border-2 border-[#0B3C88] focus:ring-[#0B3C88]',
+      'bg-white hover:bg-slate-50 active:bg-slate-100 text-[#0B3C88] font-bold border-2 border-[#0B3C88] focus:ring-[#0B3C88]',
+    'outline-white':
+      'bg-transparent hover:bg-white/15 active:bg-white/25 text-white border-2 border-white focus:ring-white shadow-sm font-bold',
     secondary:
       'bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 border border-slate-200 focus:ring-slate-400',
     danger:
@@ -60,14 +62,14 @@ export const Button: React.FC<ButtonProps> = ({
               r="10"
               stroke="currentColor"
               strokeWidth="4"
-            ></circle>
+            />
             <path
               className="opacity-75"
               fill="currentColor"
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
+            />
           </svg>
-          Loading...
+          <span>Processing...</span>
         </>
       ) : (
         children
@@ -75,4 +77,3 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
-

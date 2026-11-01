@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { User, LoginCredentials, AuthContextType, UserRole } from '../types/auth';
+import { User, LoginCredentials, AuthContextType, UserRole, RegistrationPayload } from '../types/auth';
 import { authService } from '../services/authService';
 import { MOCK_USERS } from '../services/mockData';
 
@@ -8,9 +8,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
     const savedUser = localStorage.getItem('auth_user');
-    return savedUser ? JSON.parse(savedUser) : MOCK_USERS[0]; // default to institution admin for immediate mockup view
+    return savedUser ? JSON.parse(savedUser) : MOCK_USERS[0];
   });
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('auth_token') || 'demo_token');
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('auth_token') || 'demo_token_inst');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -41,6 +41,42 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const loginWithGoogle = async (roleHint: UserRole = 'INSTITUTION_ADMIN'): Promise<User> => {
+    setIsLoading(true);
+    try {
+      const resp = await authService.loginWithGoogle(roleHint);
+      setUser(resp.user);
+      setToken(resp.token);
+      return resp.user;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const loginWithJanParichay = async (): Promise<User> => {
+    setIsLoading(true);
+    try {
+      const resp = await authService.loginWithJanParichay();
+      setUser(resp.user);
+      setToken(resp.token);
+      return resp.user;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const register = async (payload: RegistrationPayload): Promise<User> => {
+    setIsLoading(true);
+    try {
+      const resp = await authService.register(payload);
+      setUser(resp.user);
+      setToken(resp.token);
+      return resp.user;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const logout = () => {
     authService.logout();
     setUser(null);
@@ -57,6 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       role,
       institution_id: role === 'INSTITUTION_ADMIN' ? 'inst_01' : null,
       institution_name: role === 'INSTITUTION_ADMIN' ? 'Delhi Institute of Advanced Engineering & Technology' : null,
+      apaar_id: role === 'STUDENT' ? '123456789012' : undefined,
       status: 'active',
     };
     setUser(targetUser);
@@ -72,6 +109,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         isLoading,
         login,
+        loginWithGoogle,
+        loginWithJanParichay,
+        register,
         logout,
         switchRole,
       }}
@@ -88,4 +128,3 @@ export const useAuth = (): AuthContextType => {
   }
   return context;
 };
-

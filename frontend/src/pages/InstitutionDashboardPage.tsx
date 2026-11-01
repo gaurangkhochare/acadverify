@@ -10,7 +10,6 @@ import { IntakeProgress } from '../components/dashboard/IntakeProgress';
 import { IssueActionCard } from '../components/dashboard/IssueActionCard';
 import { Button } from '../components/common/Button';
 import { Modal } from '../components/common/Modal';
-import { Badge } from '../components/common/Badge';
 import { useNotification } from '../context/NotificationContext';
 
 export const InstitutionDashboardPage: React.FC = () => {
@@ -66,39 +65,39 @@ export const InstitutionDashboardPage: React.FC = () => {
   const institutionName = user?.institution_name || summary?.institution_name || 'Delhi Institute of Advanced Engineering & Technology';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
-      {/* Top Welcome Header - Matching Mockup 1 */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 min-w-0">
+      {/* Top Welcome Header - Refined Typography & Visual Hierarchy */}
+      <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Welcome, {institutionName}
           </h1>
-          <span className="bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold px-3 py-1 rounded-full">
+          <span className="inline-flex items-center bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
             Sample data
           </span>
         </div>
       </div>
 
-      {/* Quick Action Buttons - Matching Mockup 1 */}
-      <div className="flex flex-wrap items-center gap-4">
+      {/* Quick Action Buttons - Left-aligned with stat cards, subtle secondary hover */}
+      <div className="w-full flex flex-wrap items-center gap-3">
         <Button
           onClick={() => navigate('/upload')}
           variant="primary"
-          className="text-base sm:text-lg font-bold px-7 py-3.5 bg-[#0B3C88] hover:bg-[#072E68] text-white rounded-xl shadow-sm"
+          className="text-sm sm:text-base font-bold px-5 py-2.5 bg-[#0B3C88] hover:bg-[#082b60] text-white rounded-xl shadow-xs transition-colors"
         >
           Upload student data
         </Button>
         <Button
           onClick={() => navigate('/verify')}
           variant="outline"
-          className="text-base sm:text-lg font-bold px-7 py-3.5 text-[#0B3C88] border-2 border-[#0B3C88] bg-white hover:bg-slate-50 rounded-xl shadow-sm"
+          className="text-sm sm:text-base font-semibold px-5 py-2.5 text-slate-700 hover:text-slate-900 border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 rounded-xl shadow-xs transition-colors"
         >
           Verify a student record
         </Button>
       </div>
 
-      {/* 4 Metric Cards - Matching Mockup 1 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* 4 Metric Cards - Fluid CSS Grid, subtle light gray borders, soft shadows, pastel warning */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         <MetricCard
           label="Approved intake"
           value={summary?.approved_intake ?? 120}
@@ -122,34 +121,35 @@ export const InstitutionDashboardPage: React.FC = () => {
         />
       </div>
 
-      {/* Intake Progress Section - Matching Mockup 1 */}
-      <div className="bg-white rounded-2xl border-2 border-slate-900 p-6 sm:p-8 shadow-sm">
+      {/* Intake Progress Section - Fluid percentage width, subtle light gray border */}
+      <div className="w-full bg-white rounded-2xl border border-gray-200 p-6 sm:p-7 shadow-sm">
         <IntakeProgress
           enrolled={summary?.students_enrolled ?? 118}
           approved={summary?.approved_intake ?? 120}
         />
       </div>
 
-      {/* "What needs fixing" Section - Matching Mockup 1 */}
-      <div className="space-y-6">
+      {/* "What needs fixing" Section - Distinct structured UI rows */}
+      <div className="w-full space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
             What needs fixing
           </h2>
           <button
             onClick={() => navigate('/issues')}
-            className="text-sm sm:text-base font-bold text-[#0B3C88] hover:underline"
+            className="text-sm font-semibold text-[#0B3C88] hover:underline"
           >
             View all {issues.length} issues →
           </button>
         </div>
 
-        <div className="space-y-4">
-          {/* Card 1: Missing APAAR ID */}
+        <div className="w-full space-y-3">
+          {/* Card 1: Missing APAAR ID - Urgent alert container */}
           <IssueActionCard
             title="3 records have no APAAR ID"
             subtext="Ask these students for their ID, then add it."
             actionLabel="Fix now"
+            variant="urgent"
             onAction={() => {
               const issue = issues.find((i) => i.type === 'MISSING_APAAR_ID') || issues[0];
               setSelectedIssue(issue);
@@ -161,6 +161,7 @@ export const InstitutionDashboardPage: React.FC = () => {
             title="2 students may be enrolled at another institution too"
             subtext="Check the details and confirm which enrolment is correct."
             actionLabel="Review"
+            variant="review"
             onAction={() => {
               const issue = issues.find((i) => i.type === 'CROSS_INSTITUTION_MATCH') || issues[1];
               setSelectedIssue(issue);
@@ -172,6 +173,7 @@ export const InstitutionDashboardPage: React.FC = () => {
             title="1 record is missing its seat category"
             subtext="Choose general, supernumerary, NRI, OCI or foreign national."
             actionLabel="Fix now"
+            variant="fix"
             onAction={() => {
               const issue = issues.find((i) => i.type === 'INCOMPLETE_RECORD') || issues[2];
               setSelectedIssue(issue);
@@ -188,12 +190,12 @@ export const InstitutionDashboardPage: React.FC = () => {
           title={`Review Case: ${selectedIssue.message}`}
           maxWidth="lg"
         >
-          <div className="space-y-4 text-slate-900">
+          <div className="space-y-4 text-gray-900">
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
               <p className="text-xs font-bold uppercase tracking-wider text-amber-800">
                 Rule Explanation:
               </p>
-              <p className="text-sm text-slate-800 mt-1">{selectedIssue.explanation}</p>
+              <p className="text-sm text-gray-800 mt-1">{selectedIssue.explanation}</p>
             </div>
 
             {selectedIssue.student_name && (
@@ -204,7 +206,7 @@ export const InstitutionDashboardPage: React.FC = () => {
             )}
 
             <div>
-              <label htmlFor="notes-area" className="block text-sm font-bold text-slate-800 mb-1">
+              <label htmlFor="notes-area" className="block text-sm font-bold text-gray-800 mb-1">
                 Registrar Review Notes / Resolution Rationale:
               </label>
               <textarea
@@ -213,11 +215,11 @@ export const InstitutionDashboardPage: React.FC = () => {
                 value={resolutionNotes}
                 onChange={(e) => setResolutionNotes(e.target.value)}
                 placeholder="Enter verification notes, transfer certificate number, or corrected APAAR details..."
-                className="w-full rounded-xl border border-slate-300 p-3 text-sm focus:ring-2 focus:ring-[#0B3C88] focus:border-[#0B3C88]"
+                className="w-full rounded-xl border border-gray-300 p-3 text-sm focus:ring-2 focus:ring-[#0B3C88] focus:border-[#0B3C88]"
               />
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-gray-100">
               <Button
                 variant="secondary"
                 onClick={() => setSelectedIssue(null)}
@@ -240,4 +242,3 @@ export const InstitutionDashboardPage: React.FC = () => {
     </div>
   );
 };
-

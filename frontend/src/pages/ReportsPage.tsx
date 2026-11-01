@@ -45,11 +45,11 @@ export const ReportsPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8 min-w-0">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Approved Intake & Enrolment Report
           </h1>
           <p className="text-sm text-slate-600 mt-1">
@@ -76,9 +76,11 @@ export const ReportsPage: React.FC = () => {
 
       {/* Summary Box */}
       <div className="bg-white border-2 border-slate-900 rounded-2xl p-6 sm:p-8 shadow-sm">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Programme-wise Intake Utilization</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mb-4">
+          Programme-wise Intake Utilization
+        </h2>
 
-        <div className="border border-slate-200 rounded-xl overflow-hidden">
+        <div className="border border-slate-200 rounded-xl overflow-x-auto w-full max-w-full">
           <table className="min-w-full divide-y divide-slate-200 text-left">
             <thead className="bg-[#071830] text-white text-sm font-bold">
               <tr>

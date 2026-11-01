@@ -3,14 +3,92 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* Offsets fixed navigation header on anchor scroll */
+    overflow-x: hidden;
+  }
+
   body {
-    @apply bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900;
+    @apply bg-slate-50 text-slate-800 antialiased font-sans selection:bg-blue-100 selection:text-blue-900;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-slate-900;
+    @apply font-bold tracking-tight;
   }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari, Edge and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+/* ========================================================
+   PREMIUM SPA INTERACTION DESIGN & PAGE TRANSITIONS
+   Fluid, professional ease-out curves (no bounce/springs)
+   ======================================================== */
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softStaggerFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main Client-Side Route Enter Animation */
+.animate-page-enter {
+  animation: pageEnter 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* Soft Component Mount Staggers */
+.animate-stagger-1 {
+  animation: softStaggerFade 400ms cubic-bezier(0.16, 1, 0.3, 1) 120ms backwards;
+  will-change: opacity, transform;
+}
+
+.animate-stagger-2 {
+  animation: softStaggerFade 450ms cubic-bezier(0.16, 1, 0.3, 1) 220ms backwards;
+  will-change: opacity, transform;
+}
+
+.animate-stagger-3 {
+  animation: softStaggerFade 500ms cubic-bezier(0.16, 1, 0.3, 1) 320ms backwards;
+  will-change: opacity, transform;
 }
 
 /* Custom styling matching the SIH / AICTE mockup design */
@@ -25,12 +103,3 @@
 .brand-nav-tab-inactive {
   @apply text-white/80 hover:text-white hover:bg-white/10;
 }
-
-.metric-card-box {
-  @apply bg-white rounded-2xl border border-slate-900 p-6 shadow-sm transition-all;
-}
-
-.metric-card-warning {
-  @apply bg-[#FDE68A] border-slate-900;
-}
-
