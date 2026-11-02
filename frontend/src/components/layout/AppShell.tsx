@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { 
   ShieldCheck, 
   Menu, 
@@ -421,10 +422,12 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
             </div>
           </div>
 
-          {/* Right Side: User Session / Circular Avatar / Logout */}
+          {/* Right Side: Language Switcher + User Session / Circular Avatar / Logout */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher variant="light" />
+
             {user ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 pl-2 sm:pl-3 border-l border-gray-200">
                 {/* Circular Avatar + Name + Specific Role */}
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-full bg-blue-100 text-[#0B3C88] border border-blue-200 font-bold flex items-center justify-center shrink-0 text-sm shadow-xs">

@@ -10,7 +10,7 @@ Build the responsive, accessible, and official frontend for the APAAR platform u
 | Deliverable | Key File(s) | Status | Notes |
 |---|---|---|---|
 | **Public Government Home Portal** | `HomePage.tsx` | **Completed** | Hero banner, instant public verify widget, national stats ticker (4,200+ colleges), 4 stakeholder tabs, circulars ribbon. |
-| **GIGW Accessibility Bar** | `GovtHeader.tsx` | **Completed** | Tricolor flag, font resizer (`A-`, `A`, `A+`), language toggle, screen reader access. |
+| **Regional Language Switcher** | `LanguageSwitcher.tsx` | **Completed** | Sleek dropdown supporting 8 Indian languages (EN, HI, MR, TA, TE, BN, GU, KN) with dual-mode theme support. |
 | **Authentication & SSO** | `LoginPage.tsx` | **Completed** | Google Workspace, Jan Parichay (National SSO), institutional login, 1-click SIH judge switchers for all 4 roles. |
 | **Multi-Role Registration** | `RegisterPage.tsx` | **Completed** | "Who Are You?" identity selector (Institution, Corporate Verifier, Student) with adaptive form fields and Google signup. |
 | **Institution Dashboard (Mockup 1)** | `InstitutionDashboardPage.tsx` | **Completed** | 4 metric cards, intake progress bar (118/120 filled, 2 remaining), "What needs fixing" action cards with resolution modals. |
@@ -27,7 +27,7 @@ Build the responsive, accessible, and official frontend for the APAAR platform u
 
 ## Completion Checklist
 - [x] Classical Public Government Home Portal implemented.
-- [x] Official GIGW 3.0 accessibility top bar and national tricolor accents added.
+- [x] Modern regional language switcher (8 languages) & sovereign identity navigation.
 - [x] "Who Are You?" Multi-role registration portal implemented with Google Sign-In.
 - [x] All 4 stakeholder interfaces fully implemented and route-mapped:
   - [x] 1. Institution Administrator Portal

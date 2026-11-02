@@ -13,7 +13,7 @@ import {
   GraduationCap,
   UserPlus
 } from 'lucide-react';
-import { GovtHeader } from './GovtHeader';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
@@ -98,10 +98,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* 1. Official Government Header Strip (GIGW Compliant) */}
-      <GovtHeader />
-
-      {/* 2. Primary Portal Navbar */}
+      {/* Primary Portal Navbar */}
       <header className="bg-[#0B3C88] text-white shadow-md sticky top-0 z-40 border-b border-blue-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">

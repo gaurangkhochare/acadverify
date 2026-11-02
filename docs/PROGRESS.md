@@ -122,3 +122,26 @@ Update this file at the end of each work session.
   - `npm run build`: Production bundle compiled cleanly in **4.57s with zero errors**.
   - Verified live on `http://localhost:3000/` (HTTP 200 OK).
 - **Git status:** Local changes only. STRICT NO GIT PUSH maintained.
+
+
+## Session update — 2026-11-01 (Member 1 - Legacy Utility Bar Removal & Modern Language Switcher)
+- **Member:** Member 1 (Frontend & UX)
+- **Completed:**
+  - **Removed Legacy Top Utility Bar Globally**:
+    - Completely deleted `GovtHeader.tsx` containing legacy dark bar ("भारत सरकार | Government of India", "Screen Reader Access", text sizing, and static Hindi link).
+    - Removed references and imports from `PublicLayout.tsx` and `Navbar.tsx` so the legacy bar is completely eliminated across public and authenticated screens.
+  - **Engineered Modern Language Switcher Dropdown (`LanguageSwitcher.tsx`)**:
+    - Built a sleek, floating language selector with a small globe icon and language indicator (`🌐 English`, `🌐 हिन्दी`, etc.).
+    - Supported 8 languages: English, Hindi (हिन्दी), Marathi (मराठी), Tamil (தமிழ்), Telugu (తెలుగు), Bengali (বাংলা), Gujarati (ગુજરાતી), Kannada (ಕನ್ನಡ).
+    - Supported dual-mode styling:
+      - `variant="dark"` for Navy headers (`#0B3C88`) with frosted glass aesthetic (`bg-white/10 hover:bg-white/20 text-blue-100 hover:text-white border-white/20`).
+      - `variant="light"` for white headers with subtle slate pill styling (`bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border-slate-200`).
+    - Implemented click-outside and Escape-key dismiss handlers, active checkmark indicator, `localStorage` persistence (`apaar_lang`), and accessible ARIA attributes (`aria-expanded`, `aria-haspopup`).
+  - **Integrated Switcher into Global Layouts**:
+    - `PublicLayout.tsx`: Injected `<LanguageSwitcher variant="dark" />` on the far right of the desktop navigation, immediately to the left of "API Docs", "Help", and "Sign In", plus integrated into the mobile action bar.
+    - `AppShell.tsx`: Injected `<LanguageSwitcher variant="light" />` on the far right of the top utility header, immediately to the left of the user's circular avatar and logout button with crisp `items-center` alignment.
+- **Tests run and actual results:**
+  - `npm test` (Vitest): **14/14 tests passed** across all 4 test suites with 0 failures.
+  - `npm run build`: Production bundle compiled cleanly in **5.49s with zero errors**.
+  - Verified live on `http://localhost:3000/` (HTTP 200 OK).
+- **Git status:** Local changes only. STRICT NO GIT PUSH maintained.

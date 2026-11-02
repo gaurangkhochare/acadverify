@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { GovtHeader } from '../common/GovtHeader';
+import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { 
   ShieldCheck, 
   LogIn, 
@@ -43,10 +43,7 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 text-slate-900 font-sans antialiased w-full">
-      {/* 1. Official Republic of India & GIGW 3.0 Accessibility Top Bar */}
-      <GovtHeader />
-
-      {/* 2. Standardized Clean Horizontal Top Navigation Bar */}
+      {/* Standardized Clean Horizontal Top Navigation Bar */}
       <header className="bg-[#0B3C88] text-white shadow-md sticky top-0 z-40 border-b border-blue-950 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -65,13 +62,17 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
               </div>
             </NavLink>
 
-            {/* Far Right: Public Links (Home, API Docs, Help) & Auth Action Buttons */}
+            {/* Far Right: Public Links (Home, Language, API Docs, Help) & Auth Action Buttons */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {/* Main Navigation Links with generous breathing room */}
               <nav className="flex items-center gap-6 lg:gap-8" aria-label="Main Navigation">
                 <NavLink to="/" end className={navLinkClass}>
                   Home
                 </NavLink>
+
+                {/* Modern Language Switcher Dropdown (Seamlessly integrated to the left of API Docs, Help, and Sign In) */}
+                <LanguageSwitcher variant="dark" />
+
                 <NavLink to="/api-docs" className={navLinkClass}>
                   API Docs
                 </NavLink>
@@ -133,8 +134,9 @@ export const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
               )}
             </div>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Actions: Language Switcher & Hamburger Button */}
             <div className="flex md:hidden items-center gap-2">
+              <LanguageSwitcher variant="dark" />
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
